@@ -1,0 +1,7 @@
+<h1> Application Name: <%= @application.name %> <h1>
+<h2> Application URL: <%=@application.url %> </h2>
+
+<div class= "col-md-4">
+    <%= link_to "delete", @application, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %>
+  
+</div>

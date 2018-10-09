@@ -1,0 +1,6 @@
+<h1> All my applications <h1>
+<ul>
+<% @applications.each do |app| %>
+  <li><%= link_to app.name, app %></li>
+</ul>
+<% end %>
