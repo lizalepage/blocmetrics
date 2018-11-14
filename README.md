@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Added two javascript tags to Lizapedia that tracks the amount of clicks on the wiki page and home page.
 
-Things you may want to cover:
+Have the follow piece of javascript on the wiki page
 
-* Ruby version
+<script>blocmetrics.report('wiki page loaded');</script>
 
-* System dependencies
+and on the home page
 
-* Configuration
+<script>blocmetrics.report('home page loaded');</script>
 
-* Database creation
+The following snippet is on the application.js file
 
-* Database initialization
+var blocmetrics = {};
+  blocmetrics.report = function(eventName){
+    var event = {event: {name: eventName}};
 
-* How to run the test suite
+    var request = new XMLHttpRequest();
 
-* Services (job queues, cache servers, search engines, etc.)
+    request.open("POST", "http://localhost:3000/api/events", true);
 
-* Deployment instructions
+    request.setRequestHeader('Content-Type', 'application/json');
 
-* ...
+    request.send(JSON.stringify(event));
+
+  };
